@@ -19,5 +19,16 @@ public class Main {
         Path path3 = Paths.get("src/main/resources/assignment/sec03/Hadoop_2k.log");
         FileReaderService fileService3 = new FileReaderService();
         fileService3.read(path3).subscribe(Util.subscriber());
+
+        FileReaderService fileService4 = new FileReaderService();
+        fileService4.read(path3).map(s -> {
+                    Integer integer = Util.faker().random().nextInt(0, 10);
+                    if( integer > 8) {
+                        throw new RuntimeException("oops");
+                    }
+                    return s;
+                })
+                .take(10)
+                .subscribe(Util.subscriber());
     }
 }

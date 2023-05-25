@@ -23,6 +23,7 @@ public class FileReaderService {
         return (br, sink) -> {
             try {
                 String line = br.readLine();
+                System.out.println("reading --- " + line);
                 if (Objects.isNull(line)) {
                     sink.complete();
                 } else {
@@ -39,6 +40,7 @@ public class FileReaderService {
         return br -> {
             try {
                 br.close();
+                System.out.println("--closed");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
