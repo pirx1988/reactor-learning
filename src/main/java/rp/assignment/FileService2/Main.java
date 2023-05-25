@@ -2,15 +2,22 @@ package rp.assignment.FileService2;
 
 import rp.courseutil.Util;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Main {
     public static void main(String[] args) {
-        FileService2 fileService = new FileService2("input.csv");
-        fileService.read().subscribe(Util.subscriber());
 
-        FileService2 fileService2 = new FileService2("Hadoop_2k.log");
-        fileService2.read().subscribe(Util.subscriber());
-//
-        FileService2 fileService3 = new FileService2("Apache_2k.log");
-        fileService3.read().subscribe(Util.subscriber());
+        Path path = Paths.get("src/main/resources/assignment/sec03/input.csv");
+        FileReaderService fileService = new FileReaderService();
+        fileService.read(path).subscribe(Util.subscriber());
+
+        Path path2 = Paths.get("src/main/resources/assignment/sec03/Apache_2k.log");
+        FileReaderService fileService2 = new FileReaderService();
+        fileService.read(path2).subscribe(Util.subscriber());
+
+        Path path3 = Paths.get("src/main/resources/assignment/sec03/Hadoop_2k.log");
+        FileReaderService fileService3 = new FileReaderService();
+        fileService3.read(path3).subscribe(Util.subscriber());
     }
 }
