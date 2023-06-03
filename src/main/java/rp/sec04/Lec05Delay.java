@@ -14,7 +14,7 @@ public class Lec05Delay {
         System.setProperty("reactor.bufferSize.x", "9");
         Flux.range(1, 100)
                 .log()
-                .limitRate(10, 2)
+                .limitRate(10)
                 .delayElements(Duration.ofSeconds(1))
                 .subscribe(Util.subscriber());
 

@@ -18,8 +18,8 @@ public class Lec05FluxGenerate {
 //            synchronousSink.next(Util.faker().country().name());
 
                 })
-//                .take(2)
-                .takeUntil(element -> ((String) element).toLowerCase().equals("canada"))
+                .take(2)
+//                .takeUntil(element -> ((String) element).toLowerCase().equals("canada"))
                 .subscribe(Util.subscriber());
     }
 }

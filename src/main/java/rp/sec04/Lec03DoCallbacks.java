@@ -22,6 +22,7 @@ public class Lec03DoCallbacks {
                 .doOnSubscribe(s -> System.out.println("doOnSubscribe :" + s))
                 .doOnRequest(l -> System.out.println("doOnRequest : " + l))
 //                .doFirst(() -> System.out.println("doFirst 2"))
+                .doFinally(signal -> System.out.println("doFinally 1:" + signal))
                 .doOnError(err -> System.out.println("doOnError :" + err.getMessage()))
                 .doOnTerminate(() -> System.out.println("doOnTerminate"))
 //                .doFirst(() -> System.out.println("doFirst 3"))
@@ -30,7 +31,7 @@ public class Lec03DoCallbacks {
                 .doOnDiscard(Object.class, o -> System.out.println("doOnDiscard : " + o))
 //                .doFirst(() -> System.out.println("doFirst 4"))
                 .take(2)
-                .doFinally(signal -> System.out.println("doFinally :" + signal)) // do anything as a last
+                .doFinally(signal -> System.out.println("doFinally 2:" + signal)) // do anything as a last
                 .subscribe(Util.subscriber());
     }
 }
